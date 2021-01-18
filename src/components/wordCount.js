@@ -103,6 +103,7 @@ export default class RedditWordCount extends React.Component {
                     </select>
                     Exclude Boring Words?<input onChange={this.onCheck} type='checkbox' />
                     <button>Go!</button>
+                    <button onClick={this.onReset}>Reset</button>
                 </form>
                 {this.state.isLoading && <div>Loading...</div>}
                 {
