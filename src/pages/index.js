@@ -2,6 +2,7 @@ import React from "react"
 import Layout from "../components/layout"
 import styles from './index.module.scss'
 import WordCount from '../components/wordCount'
+import Countdown from '../components/countdown'
 
 
 const content = {
@@ -54,6 +55,7 @@ export default () => (
     <DropDown title={'What it does'} name={'whatItDoes'} description={content.one} />
     <DropDown title={'How it works'} name={'howItWorks'} description={content.two} />
     <WordCount />
+    <Countdown />
   </Layout>
 )
 

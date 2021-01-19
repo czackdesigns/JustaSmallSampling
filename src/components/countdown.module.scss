@@ -1,0 +1,28 @@
+//Countdown component
+#countdown_container {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    border-top: 1px red solid;
+    border-bottom: 2px red solid;
+}
+
+#countdown_container > div {
+    width: 25%;
+    height: 15rem;
+    color: white;
+    text-align: center;
+    background-color: lightblue;
+}
+
+#countdown_container > div > h3 {
+    font-size: 3rem;
+}
+
+#countdown_container > div > h4 {
+    font-size: 2rem;
+}
+
+.offColor {
+    background-color: blue !important;
+}
