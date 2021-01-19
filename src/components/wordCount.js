@@ -1,7 +1,26 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { v4 as uuidv4 } from 'uuid'
 import styles from './wordCount.module.scss'
-import excludedWords from '../constants/excludedWords'
+import excludedWords, {words} from '../constants/excludedWords'
+import 'react-responsive-modal/styles.css';
+import { Modal } from 'react-responsive-modal';
+
+const BoringWords = () => {
+    const [open, setOpen] = useState(false);
+    const onOpenModal = () => setOpen(true);
+    const onCloseModal = () => setOpen(false);
+
+    return (
+        <div id={styles.modal}>
+            <span onClick={onOpenModal}>Boring Words</span>
+            <Modal open={open} onClose={onCloseModal} center>
+                <div id={styles.modal_content}>
+                    {words.map(word => <span key={uuidv4()}>{word},</span>)}
+                </div>
+            </Modal>
+        </div>
+    )
+}
 
 export default class RedditWordCount extends React.Component {
     constructor (props) {
@@ -101,11 +120,13 @@ export default class RedditWordCount extends React.Component {
                         <option value={15}>15 minutes</option>
                         <option value={20}>20 minutes</option>
                     </select>
-                    Exclude Boring Words?<input onChange={this.onCheck} type='checkbox' />
+                    Exclude <BoringWords />?<input onChange={this.onCheck} type='checkbox' />
                     <button>Go!</button>
                     <button onClick={this.onReset}>Reset</button>
                 </form>
-                {this.state.isLoading && <div>Loading...</div>}
+                {
+                    this.state.isLoading && <div className={styles.lds_ring}><div></div><div></div><div></div><div></div></div>
+                }
                 {
                     this.state.err && <div>Oops your request could not be completed...<br/>Please make sure you spelled the subreddit correctly and try again!</div>
                 }
