@@ -47,15 +47,18 @@ const DropDown = ({ description, name, title }) => {
   )
 }
 
-export default () => (
-  <Layout>
-    <div id={styles.title}>
-      <h1>Welcome to Just a Small Sampling of Some of My Work</h1>
-    </div>
-    <DropDown title={'What it does'} name={'whatItDoes'} description={content.one} />
-    <DropDown title={'How it works'} name={'howItWorks'} description={content.two} />
-    <WordCount />
-    <Countdown />
-  </Layout>
-)
+export default () => {
 
+
+  return (
+    <Layout>
+      <div id={styles.title}>
+        <h1>Welcome to Just a Small Sampling of Some of My Work</h1>
+      </div>
+      <DropDown title={'What it does'} name={'whatItDoes'} description={content.one} />
+      <DropDown title={'How it works'} name={'howItWorks'} description={content.two} />
+      <WordCount />
+      <Countdown time={'20'} />
+    </Layout>
+  )
+}

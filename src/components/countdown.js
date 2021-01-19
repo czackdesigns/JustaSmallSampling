@@ -2,9 +2,9 @@ import React from 'react'
 import moment from 'moment'
 import styles from './countdown.module.scss'
 
-export default class Countdown extends React.Component {
-  constructor() {
-    super()
+class Countdown extends React.Component {
+  constructor(props) {
+    super(props)
 
     this.state = {
       now: moment()
@@ -16,7 +16,7 @@ export default class Countdown extends React.Component {
   }
 
   render() {
-    const toEndMS = moment([2021, 0, 20, 12]).diff(this.state.now)
+    const toEndMS = moment([2021, 0, this.props.time, 12]).diff(this.state.now)
     const toEndDays = Math.floor(toEndMS / (1000 * 60 * 60 * 24))
     const toEndHours = Math.floor(toEndMS / (1000 * 60 * 60) % 24)
     const toEndMinutes = Math.floor(toEndMS / (1000 * 60) % 60)
@@ -46,5 +46,30 @@ export default class Countdown extends React.Component {
   }
   componentDidMount() {
     this.updateClock()
+  }
+}
+
+export default class extends React.Component {
+  constructor() {
+    super()
+    this.state = {
+      time: 20
+    }
+  }
+
+  onChange = (e) => {
+    this.setState({ time: e.target.value })
+  }
+
+  render() {
+    return (
+      <div>
+        <select onChange={this.onChange} >
+          <option value={30}>30</option>
+          <option value={25}>25</option>
+        </select>
+        <Countdown time={this.state.time} />
+      </div>
+    )
   }
 }
