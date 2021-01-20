@@ -100,7 +100,11 @@ export default class RedditWordCount extends React.Component {
         e.preventDefault()
 
         this.setState({ isLoading: true })
-        fetch(`https://reddit-scraper-crawler.herokuapp.com/search?searchquery=${this.state.subreddit}-${this.state.minutes}`)
+        fetch(`https://reddit-scraper-crawler.herokuapp.com/search?searchquery=${this.state.subreddit}-${this.state.minutes}`, {
+            headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+            },
+        })
             .then(res => res.json())
             .then((data) => {
                 this.setState({ comments: data, isLoading: false, err: false })

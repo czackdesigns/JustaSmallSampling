@@ -45,14 +45,24 @@ const content = {
 
 const DropDown = ({ description, name, title }) => {
   const onToggle = () => {
-  const content = document.querySelector(`#${name} > h3`)
-  content.style.display === 'none' ? content.style.display = 'block' : content.style.display = 'none'
+    const content = document.querySelector(`#${name} > h3`)
+    if (content.style.visibility === 'hidden') {
+      content.style.opacity = '100%'
+      content.style.visibility = 'visible'
+      content.style.position = 'relative' 
+    } else {
+      content.style.visibility = 'hidden'
+      content.style.position = 'absolute'
+      content.style.opacity = '0%'
 
+      
+    }
+    
   }
   return (
     <div id={name}>
       <h2 onClick={onToggle}>{title}:</h2>
-      <h3 style={{'display':'none'}}>
+      <h3 style={{'visibility':'hidden', 'position':'absolute', 'transition':'opacity ease 2.5s', 'opacity':'0'}}>
         {description}
       </h3>
     </div>
