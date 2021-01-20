@@ -28,6 +28,18 @@ const content = {
       While doing this it ignores the excluded words(if checked) and sorts from most to least.<br/>
       It then sets that array to the state. <br/>
       On the state update a function runs that iterates over the new state and creates an ordered list item for each.
+    </p>,
+  three: 
+    <p>
+      This component takes the input from the Date Picker element and displays a live countdown in days, hours, minutes, and seconds until that date and time.
+    </p>,
+  four: 
+    <p>
+      This component uses the Moment.js library and the react-datepicker node package.<br/>
+      The countdown component takes the input from the datepicker and calls the .diff() function provided by Moment.js<br/>
+      This function finds the difference in time between two dates.<br/>
+      The differences are divided out into their respective days, hours, minutes, or seconds.<br/>
+      The component pushes a new time difference to the state and subsequently updates, once per second. 
     </p>
 }
 
@@ -58,7 +70,9 @@ export default () => {
       <DropDown title={'What it does'} name={'whatItDoes'} description={content.one} />
       <DropDown title={'How it works'} name={'howItWorks'} description={content.two} />
       <WordCount />
-      <Countdown time={'20'} />
+      <DropDown title={'What it does'} name={'whatItDoesCount'} description={content.three} />
+      <DropDown title={'How it works'} name={'howItWorksCount'} description={content.four} />
+      <Countdown />
     </Layout>
   )
 }

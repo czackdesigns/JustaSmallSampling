@@ -1,4 +1,6 @@
-import React from 'react'
+import React from "react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import moment from 'moment'
 import styles from './countdown.module.scss'
 
@@ -16,12 +18,11 @@ class Countdown extends React.Component {
   }
 
   render() {
-    const toEndMS = moment([2021, 0, this.props.time, 12]).diff(this.state.now)
+    const toEndMS = moment(this.props.time).diff(this.state.now)
     const toEndDays = Math.floor(toEndMS / (1000 * 60 * 60 * 24))
     const toEndHours = Math.floor(toEndMS / (1000 * 60 * 60) % 24)
     const toEndMinutes = Math.floor(toEndMS / (1000 * 60) % 60)
     const toEndSeconds = Math.floor(toEndMS / (1000) % 60)
-
 
     return (
       <div id={styles.countdown_container}>
@@ -53,21 +54,14 @@ export default class extends React.Component {
   constructor() {
     super()
     this.state = {
-      time: 20
+      time: new Date(2021, 2, 1)
     }
-  }
-
-  onChange = (e) => {
-    this.setState({ time: e.target.value })
   }
 
   render() {
     return (
       <div>
-        <select onChange={this.onChange} >
-          <option value={30}>30</option>
-          <option value={25}>25</option>
-        </select>
+        <DatePicker showTimeSelect selected={this.state.time} onChange={date => this.setState({ time: date })} />
         <Countdown time={this.state.time} />
       </div>
     )
