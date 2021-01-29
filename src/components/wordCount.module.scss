@@ -1,3 +1,18 @@
+#wordCount_container {
+  width: 100%;
+  display: block;
+}
+
+.flex_container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+#wordCount > form > input {
+  height: 2rem;
+}
+
 #wordList {
     max-height: 30rem;
     display: flex;

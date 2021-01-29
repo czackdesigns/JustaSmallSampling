@@ -1,3 +1,39 @@
+.component_container {
+    width: 90%;
+    display: block;
+    margin: 1rem auto;
+    border: 2px black solid;
+    border-radius: 16px;
+    background-color: #ebebeb;
+    padding: 1rem;
+}
+
+.flex_container {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+}
+
 .description_container {
-    
+    width: 40%;
+    padding: 1rem;
+    margin: 2rem;
+    background-color: white;
+    border: 2px #696969 solid;
+    box-shadow:  2px 2px 5px 2px #696969;
+    cursor: pointer;
+}
+
+.description_container > h2 {
+    text-decoration: underline;
+}
+
+.description_container > h3 > ul > li {
+    text-decoration: unset;
+    font-weight: normal;
+}
+
+#title {
+    width: 100%;
+    text-align: center;
 }

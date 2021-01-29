@@ -115,18 +115,22 @@ export default class RedditWordCount extends React.Component {
 
     render() {
         return (
-            <div>
+            <div id={styles.wordCount_container}>
                 <form onSubmit={this.onSubmit}>
-                    SubReddit: r/:<input onChange={this.onChange}></input>
-                    <select onChange={this.onClick}>
-                        <option value={5}>5 minutes</option>
-                        <option value={10}>10 minutes</option>
-                        <option value={15}>15 minutes</option>
-                        <option value={20}>20 minutes</option>
-                    </select>
-                    Exclude <BoringWords />?<input onChange={this.onCheck} type='checkbox' />
-                    <button>Go!</button>
-                    <button onClick={this.onReset}>Reset</button>
+                    <div className={styles.flex_container}>
+                        SubReddit: r/:<input onChange={this.onChange}></input>
+                        <select onChange={this.onClick}>
+                            <option value={5}>5 minutes</option>
+                            <option value={10}>10 minutes</option>
+                            <option value={15}>15 minutes</option>
+                            <option value={20}>20 minutes</option>
+                        </select>
+                    </div>
+                    <div className={styles.flex_container}>
+                        Exclude <BoringWords />?<input onChange={this.onCheck} type='checkbox' />
+                        <button>Go!</button>
+                        <button onClick={this.onReset}>Reset</button>
+                    </div>
                 </form>
                 {
                     this.state.isLoading && <div className={styles.lds_ring}><div></div><div></div><div></div><div></div></div>
